@@ -20,4 +20,11 @@ class PyClySimpleExpressions < Minitest::Test
     result2 = @py_cly.eval('print 2 + 2').chomp
     assert_equal result, result2
   end
+
+  def test_that_py_cly_can_execute_statements
+    statement_output = @py_cly.eval('a = 2').chomp
+    assert_equal "", statement_output
+    variable_lookup = @py_cly.eval('a').chomp
+    assert_equal "2", variable_lookup
+  end
 end
