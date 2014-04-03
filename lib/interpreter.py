@@ -17,3 +17,6 @@ while True:
   except SyntaxError, ex:
     print ex.msg
     sys.stdout.flush()
+  except Exception, ex:
+    print ex
+    sys.stdout.flush()

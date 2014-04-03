@@ -8,7 +8,11 @@ while buf = Readline.readline("> ", true)
   if buf == "exit"
     break
   else
-    puts py_cly.eval buf
+    begin
+      puts py_cly.eval buf
+    rescue Exception => e
+      puts e
+    end
   end
 end
 
