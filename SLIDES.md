@@ -1,19 +1,19 @@
 
-#-#
+#
 
 READ-EVAL-PRINT Loop
 
-#-#
+#
 
 instant feedback is crucial for skill development
 REPLs provide instant feedback
 Therefore REPLs are crucial
 
-#-#
+#
 
 QED
 
-#-#
+#
 
 require 'readline'
 
@@ -25,7 +25,7 @@ while buf = Readline.readline("> ", true)
   end
 end
 
-#-#
+#
 
 ```
 $ cd ~/.gem/ruby/2.0.0/gems/rb-readline-0.5.1/
@@ -36,7 +36,7 @@ $ wc -l lib/*
    9413 total
 ```
 
-#-#
+#
 
 ```
   @emacs_standard_keymap = {
@@ -50,7 +50,7 @@ $ wc -l lib/*
   }
 ```
 
-#-#
+#
 
 features:
 
@@ -60,11 +60,11 @@ features:
 
 Bash uses it.
 
-#-#
+#
 
 hard part is done!
 
-#-#
+#
 
 
 ```
@@ -81,7 +81,7 @@ end
 redis.close
 ```
 
-#-#
+#
 
 ```
 class RedisInterface
@@ -94,11 +94,11 @@ class RedisInterface
 end
 ```
 
-#-#
+#
 
 Demo!
 
-#-#
+#
 
 ```
 while buf = Readline.readline("> ", true)
@@ -114,7 +114,7 @@ while buf = Readline.readline("> ", true)
 end
 ```
 
-#-#
+#
 
 ```
 class PyCly
@@ -124,7 +124,7 @@ class PyCly
 end
 ```
 
-#-#
+#
 
 ```
 class PyCly
@@ -136,21 +136,21 @@ class PyCly
 end
 ```
 
-#-#
+#
 
 Demo!
 
-#-#
+#
 
 Multiline?
 
-#-#
+#
 
 RIPL
 
 customizable Ruby REPL
 
-#-#
+#
 
 ```
   # Loops shell until user exits
@@ -175,7 +175,7 @@ class Ripl::Shell
 end
 ```
 
-#-#
+#
 
 That's it!
 
