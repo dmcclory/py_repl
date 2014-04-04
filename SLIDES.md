@@ -15,6 +15,7 @@ QED
 
 #
 
+```ruby
 require 'readline'
 
 while buf = Readline.readline("> ", true)
@@ -24,6 +25,7 @@ while buf = Readline.readline("> ", true)
     p buf
   end
 end
+```
 
 #
 
@@ -38,7 +40,7 @@ $ wc -l lib/*
 
 #
 
-```
+```ruby
   @emacs_standard_keymap = {
       "\C-@" => :rl_set_mark  ,
       "\C-a" => :rl_beg_of_line  ,
@@ -66,8 +68,7 @@ hard part is done!
 
 #
 
-
-```
+```ruby
 redis = RedisInterface.new
 
 while buf = Readline.readline("> ", true)
@@ -100,7 +101,7 @@ Demo!
 
 #
 
-```
+```ruby
 while buf = Readline.readline("> ", true)
   if buf == "exit"
     break
@@ -116,10 +117,11 @@ end
 
 #
 
-```
+```ruby
 class PyCly
   def initialize
-    @python_input, @python_output, @python_err, @wait_thr = Open3::popen3 "python lib/interpreter.py"
+    @python_input, @python_output, @python_err, @wait_thr =
+      Open3::popen3 "python lib/interpreter.py"
   end
 end
 ```
@@ -152,8 +154,8 @@ customizable Ruby REPL
 
 #
 
-```
-  # Loops shell until user exits
+```ruby
+# Loops shell until user exits
   def loop
     before_loop
     in_loop
@@ -161,7 +163,9 @@ customizable Ruby REPL
   end
 ```
 
-```
+#
+
+```ruby
 class Ripl::Shell
   def loop_once
     @error_raised = nil

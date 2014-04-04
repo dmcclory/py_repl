@@ -1,0 +1,12 @@
+- bigger font
+  - use the tp blankscreen to figure out what size -> 'go all the way up, then shrink it by one'
+
+- Redis
+  - don't need to do complicated commands
+    - set & get is sufficient
+
+- Should have JavaScript REPL too
+
+- GOTTA get the Python repl working
+
+- should show off python examples that make it clear that you're in Python, not Ruby
