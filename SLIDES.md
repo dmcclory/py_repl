@@ -11,10 +11,6 @@ Therefore REPLs are crucial
 
 #
 
-QED
-
-#
-
 ```ruby
 require 'readline'
 
@@ -41,6 +37,7 @@ $ wc -l lib/*
 #
 
 ```ruby
+  # from rbreadline.rb
   @emacs_standard_keymap = {
       "\C-@" => :rl_set_mark  ,
       "\C-a" => :rl_beg_of_line  ,
@@ -69,39 +66,6 @@ hard part is done!
 #
 
 ```ruby
-redis = RedisInterface.new
-
-while buf = Readline.readline("> ", true)
-  if buf == "exit"
-    break
-  else
-    p redis.eval(buf)
-  end
-end
-
-redis.close
-```
-
-#
-
-```
-class RedisInterface
- ...
-  def eval(command)
-    @socket.write to_resp(command)
-    IO.select([@socket])
-    @socket.read_nonblock(500)
-  end
-end
-```
-
-#
-
-Demo!
-
-#
-
-```ruby
 while buf = Readline.readline("> ", true)
   if buf == "exit"
     break
@@ -120,20 +84,20 @@ end
 ```ruby
 class PyCly
   def initialize
-    @python_input, @python_output, @python_err, @wait_thr =
-      Open3::popen3 "python lib/interpreter.py"
+    @input, @output, @err, @proc =
+    Open3::popen3 "python lib/interpreter.py"
   end
 end
 ```
 
 #
 
-```
+```ruby
 class PyCly
   def eval string
-    @python_input.puts string
+    @input.puts string
     IO.select([@python_output])
-    @python_output.read_nonblock(100000)
+    @output.read_nonblock(100000)
   end
 end
 ```
@@ -144,10 +108,6 @@ Demo!
 
 #
 
-Multiline?
-
-#
-
 RIPL
 
 customizable Ruby REPL
@@ -155,7 +115,8 @@ customizable Ruby REPL
 #
 
 ```ruby
-# Loops shell until user exits
+  # Ripl's main loop:
+
   def loop
     before_loop
     in_loop
