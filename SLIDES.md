@@ -136,20 +136,19 @@ end
 #
 
 ```ruby
-  ...
-  begin
-    puts py_cly.eval buf
-    buf = ""
-  rescue PyCly::ParseError => e
-    buf.chomp! if buf.match(/\n\n$/)
-    while subbuf = Readline.readline("...", true)
-      break if subbuf == ""
-      buf += subbuf
-      buf += "\n"
-    end
+begin
+  puts py_cly.eval buf
+  buf = ""
+rescue PyCly::ParseError => e
+  buf.chomp! if buf.match(/\n\n$/)
+  while subbuf = Readline.readline("...", true)
+    break if subbuf == ""
+    buf += subbuf
     buf += "\n"
-    retry
   end
+  buf += "\n"
+  retry
+end
 ```
 
 #
@@ -166,11 +165,11 @@ customizable Ruby REPL
 
 thanks to Justin Campbell for:
 
-## tp
+tp
 
 github.com/justincampbell/tp
 
-## awesome TMUX conf:
+awesome TMUX conf:
 
 github.com/justincampbell/dotfiles
 
