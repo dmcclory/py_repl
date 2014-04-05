@@ -4,9 +4,17 @@ import ast
 def isexpression(tree):
   return isinstance(tree.body[0], ast.Expr)
 
+def read_chunks():
+  buf = ""
+  line = raw_input()
+  while line != "":
+    buf += line
+    line = raw_input()
+  return buf
+
 while True:
   try:
-    text = raw_input()
+    text = read_chunks()
     tree = ast.parse(text)
     if isexpression(tree):
       print eval(text)
@@ -16,6 +24,7 @@ while True:
     sys.stdout.flush()
   except SyntaxError, ex:
     print ex.msg
+    print 'invalid syntax'
     sys.stdout.flush()
   except Exception, ex:
     print ex
