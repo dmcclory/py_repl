@@ -34,4 +34,12 @@ class PyClySimpleExpressions < Minitest::Test
     result = @py_cly.eval("square(10)\n\n").chomp
     assert_equal "100", result
   end
+
+  def test_that_py_cly_can_define_classes
+    statement_output = @py_cly.eval(FIXTURES[:cool_class]).chomp
+    @py_cly.eval("c = Cool(1, 2)\n\n")
+    result = @py_cly.eval("c.sum()\n\n").chomp
+    assert_equal "3", result
+
+  end
 end

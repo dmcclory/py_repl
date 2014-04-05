@@ -15,7 +15,6 @@ while buf = Readline.readline("> ", true)
       buf.chomp! if buf.match(/\n\n$/)
       buf += Readline.readline("..", true)
       buf += "\n\n"
-      puts e
       retry
     end
   end

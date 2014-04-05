@@ -9,6 +9,7 @@ def read_chunks():
   line = raw_input()
   while line != "":
     buf += line
+    buf += "\n"
     line = raw_input()
   return buf
 
