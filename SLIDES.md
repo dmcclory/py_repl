@@ -95,7 +95,9 @@ class PyCly
   def eval string
     @input.puts string
     IO.select([@python_output])
-    @output.read_nonblock(100000)
+    result = @python_output.read_nonblock(100000)
+    raise ParseError if result.match(/invalid syntax/)
+    result
   end
 end
 ```
@@ -103,20 +105,38 @@ end
 #
 
 ```python
-while True:
-  try:
-    text = read_chunks()
-    tree = ast.parse(text)
-    if isexpression(tree):
-      print eval(text)
-    else:
-      exec(text)
-      print ""
+  while True:
+    try:
+      text = read_chunks()
+      tree = ast.parse(text)
+      if isexpression(tree):
+        print eval(text)
+      else:
+        exec(text)
+        print ""
+    except SyntaxError, ex:
+      print ex.msg
 ```
 
 #
 
 ```ruby
+  class PyCly
+    def eval string
+      @input.puts string
+      IO.select([@python_output])
+      result = @python_output.read_nonblock(100000)
+      raise ParseError if result.match(/invalid syntax/)
+      result
+    end
+  end
+```
+
+
+#
+
+```ruby
+  ...
   begin
     puts py_cly.eval buf
     buf = ""
@@ -144,31 +164,15 @@ customizable Ruby REPL
 
 #
 
-```ruby
-  # Ripl's main loop:
+thanks to Justin Campbell for:
 
-  def loop
-    before_loop
-    in_loop
-    after_loop
-  end
-```
+## tp
 
-#
+github.com/justincampbell/tp
 
-```ruby
-class Ripl::Shell
-  def loop_once
-    @error_raised = nil
-    @input = get_input
-    throw(:ripl_exit) if EXIT_WORDS.include?(@input)
-    eval_input(@input)
-    print_result(@result)
-  rescue Interrupt
-    handle_interrupt
-  end
-end
-```
+## awesome TMUX conf:
+
+github.com/justincampbell/dotfiles
 
 #
 
