@@ -7,7 +7,7 @@ Assumes you have python 2.7 ... not sure if this will work under Python 3.
 # Running
 
 ```
-$ bin/py_repl
+$ ruby bin/py_repl
 ```
 
 # Todos:
